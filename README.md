@@ -5,7 +5,7 @@ To install the required dependencies, run
 pip3 install -r requirements.txt
 ```
 
-## Data Collection
+## Collecting the Data
 To run the data collection process, run:
 ```
 sudo ./collect_data.sh <syscall log file> <cicflowmeter csv output file>
@@ -18,7 +18,7 @@ System call data is collected using a tool called Heimdall [https://github.com/r
 ### Network Traffic 
 Network traffic is recorded by CICFlowMeter [https://pypi.org/project/cicflowmeter], which captures packets and transforms them into features to be fed into ML algorithms. NOTE: The version of cicflowmeter available now has bugs and required some debugging to get working properly.
 
-## Using the Data
+## Processing the Data
 ### Automated Data Processing
 ```process_data.py``` automates the data processing stage by taking in a window size argument and an option merge argument and calls the next three scripts to do the heavy lifting of data processing.
 ```
@@ -43,6 +43,7 @@ python3 process_packets.py <input file path> <output file path> --group <frequen
 python3 merge.py <syscall file path> <network data file path> <output file path>
 ```
 
+## Using the Data
 ### Running the Algorithm
 To run the SVM using benign and malicious data, run this command from the root directory:
 ```
